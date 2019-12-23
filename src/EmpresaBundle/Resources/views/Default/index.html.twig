@@ -1,54 +1,38 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block titulo %}Empresas{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }} media="screen,projection"" />
+        <link rel="stylesheet" href="{{ asset('css/materialize.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/dataTables.materialize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/default.css') }}">
 
-{% block title %}Producto index{% endblock %}
+    </head>
+    {% block body %}
+     
 
-{% block body %}
-
-<div class="container">
-<h1>Productos</h1>
-<button id="productos-nuevo" class="btn btn-success">Nuevo producto</button>
-{#<a href="{{ path('producto_export') }}" class="btn btn-danger">Exportar a excel</a>#}
-    <br><br>
-    <table id="productos-table" class="table table-striped table-bordered" >
-        <thead class="thead-dark">
-            <tr>
-                <th>#</th>
-                <th style="width:10%" >Clave</th>
-                <th style="width:60%">Nombre</th>
-                <th style="width:10%">Precio</th>
-                <th style="width:20%">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-         {#  {% for producto in productos %}
-            <tr>
-                <td>{{ producto.id }}</td>
-                <td>{{ producto.claveProducto }}</td>
-                <td>{{ producto.nombre }}</td>
-                <td>{{ producto.precio }}</td>
-                <td>
-                <!--
-                 -->
-                    <a  class="edit btn btn-warning" href="#">Editar</a>
-                    <a   class="delete btn btn-danger" href="#">Eliminar</a>
-                </td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-            {% endfor %} #}
-        </tbody>
-    </table>
-
-    {#<a href="{{ path('producto_new') }}">Create new</a>#}
-</div>
-
-{% endblock %}
-
-{% block javascripts %}
-<script src="{{ asset('js/jquery-3.1.1.js')}}"></script>
-    <script src="{{ asset('js/materialize.js')}}"></script>
-    <script src="{{ asset('js/all.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
-{% endblock %}
+        {% for empresa in empresa %}
+        <h2>{{empresa.id}}</h2>
+        {% endfor %}
+        
+    {% endblock %}
+        
+         
+        {#                  Scripts            #}
+        {% block javascripts %}
+         <link rel="stylesheet" href="{{ asset('js/jquery-3.1.1.js') }}">
+         <link rel="stylesheet" href="{{ asset('js/materialize.js') }}">
+         <link rel="stylesheet" href="{{ asset('js/all.min.js') }}">
+         <link rel="stylesheet" href="{{ asset('js/jquery.validate.min.js') }}">
+         <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+            $('.sidenav').sidenav();
+            $(".dropdown-trigger").dropdown();
+        });
+    </script> 
+        {% endblock %}
+    </body>
+</html>
