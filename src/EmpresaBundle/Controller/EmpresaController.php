@@ -10,7 +10,7 @@ use EmpresaBundle\Entity\Post;
 class EmpresaController extends Controller
 {
     /**
-     * @Route("/Empresas", name ="Empresas_inicio")
+     * @Route("/Catalogo-Empresas", name ="Empresas_inicio")
      */
     public function TodasAction()
     {
