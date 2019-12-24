@@ -13,7 +13,7 @@
 
      <header>
 <nav>
-    <!-- Menú para cuando se despliega la página en un dispositivo grande   -->
+    <!--  -->
     <div class="nav-wrapper">
       <a href="#" data-target="mobile-demo" 
          class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -35,40 +35,20 @@
         <h2>{{empresa.telefono}}</h2>#}
 
  <div class="row">
-        <div class="col s12 m2 offset-m2">
-<<<<<<< HEAD
-            <div class="card" id="{{empresa.id}}">
+        <div class="col s12 m6 offset-m2">
+            <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src="{{empresa.imagen}}">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{empresa.nombreEmpresa}}<i class="material-icons right">more_vert</i></span>
-                <p><a href="#">This is a link</a></p>
+                <p><a href="#">{{empresa.direccion}}</a></p>
               </div>
               <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{empresa.id}}<i class="material-icons right">close</i></span>
-                <p>{{empresa.direccion}}
-                
-                {{empresa.telefono}}
-                
-                {{empresa.descripcion}}</p>
+                <span class="card-title grey-text text-darken-4">{{empresa.nombreEmpresa}}<i class="material-icons right">close</i></span>
+                <p>{{empresa.descripcion}}</p>
               </div>
-=======
-            <div class="card">
-                   <div class="card-image waves-effect waves-block waves-light">
-                      <img class="activator" src="">
-                         </div>
-                             <div class="card-content">
-                               <span class="card-title activator grey-text text-darken-4">{{empresa.nombreEmpresa}}<i class="material-icons right">more_vert</i></span>
-                               <p><a href="#">{{empresa.direccion}}</a></p>
-                             </div>
-                             <div class="card-reveal">
-                               <span class="card-title grey-text text-darken-4">Card Titlaaaaasdasdasdaggggtgggggggggaaae<i class="material-icons right">close</i></span>
-                               <p>{{empresa.descripcion}}</p>
-                             </div>
-                         </div>
-                   </div>
->>>>>>> develop-juan
+  
             </div>
             
         </div>
@@ -79,8 +59,8 @@
     {% endblock %}
         
          
-        {#                  Scripts            #}
-        {% block javascripts %}
+  <!-- /////////////////////////////////////Scripts/////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+          {% block javascripts %}
          <link rel="stylesheet" href="{{ asset('js/jquery-3.1.1.js') }}">
          <link rel="stylesheet" href="{{ asset('js/materialize.js') }}">
          <link rel="stylesheet" href="{{ asset('js/jquery.validate.min.js') }}">
