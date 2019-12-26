@@ -19,7 +19,7 @@ $(document).ready(function() {
     $('#empresa-nuevo').on('click', function() {
         document.getElementById('empresa-form').reset();
         $('#empresa-modal').modal();
-        route = "/producto/new";
+        route = "/empresa/new";
     });
     table.on('click', '.edit', function() {
         $tr = $(this).closest('tr');

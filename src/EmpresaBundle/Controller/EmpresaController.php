@@ -38,29 +38,44 @@ use Symfony\Component\Serializer\Serializer;
         $empresa = $repository -> findAll();
         return $this->render('EmpresaBundle:Default:AdminEmpresas.html.twig',array("empresa" => $empresa));
     }
+  /**
+     * @Route("/adminUsuarios", name ="admin-Usuarios")
+     */
+    public function AdminUsuariosAction()
+    {
+        $repository = $this->getDoctrine()->getRepository('EmpresaBundle:Usuarios');
+        $usuario = $repository -> findAll();
+        return $this->render('EmpresaBundle:Default:AdminUsuarios.html.twig',array("usuario" => $usuario));
+    }
+
+
+
+
+
+
     /**
      * @Route("/new", name="empresa_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
-    {
-        $data = $request->request->get('data');
-        $empresa = new Empresa();//PROBLEMA
-        $empresa->setNombreEmpresa($data['nombre']);
-        $empresa->setDireccion($data['direccion']);
-        $empresa->setTelefono($data['telefono']);
-        $empresa->setDescripcion($data['descripcion']);
-        $empresa->setImagen($data['telefono']);
-        $existente = $this->getDoctrine()->getRepository('EmpresaBundle:Empresa')->findOneBy(array('id'=>$empresa->getid()));
-        if($existente == NULL){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($empresa);
-            $entityManager->flush();
-        }
-        $dataResponse = $this->serializeEmpresa($empresa);
-        $response = new Response($dataResponse);
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
-    }
+    //public function new(Request $request): Response
+    //{
+    //    $data = $request->request->get('data');
+    //    $empresa = new Empresa();//PROBLEMA
+    //    $empresa->setNombreEmpresa($data['nombre']);
+    //    $empresa->setDireccion($data['direccion']);
+    //    $empresa->setTelefono($data['telefono']);
+    //    $empresa->setDescripcion($data['descripcion']);
+    //    $empresa->setImagen($data['telefono']);
+    //    $existente = $this->getDoctrine()->getRepository('EmpresaBundle:Empresa')->findOneBy(array('id'=>$empresa->getid()));
+    //   if($existente == NULL){
+    //        $entityManager = $this->getDoctrine()->getManager();
+    //        $entityManager->persist($empresa);
+    //        $entityManager->flush();
+    //    }
+    //    $dataResponse = $this->serializeEmpresa($empresa);
+    //    $response = new Response($dataResponse);
+    //    $response->headers->set('Content-Type', 'application/json');
+    //    return $response;
+    //}
 
 }
 
