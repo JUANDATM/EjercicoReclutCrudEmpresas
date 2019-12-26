@@ -20,7 +20,7 @@
          class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ asset('Empresas/catalogoEmpresas')}}">Inicio</a></li>
-        <li><a href="collapsible.html">Usuarios</a></li>
+        <li><a href="{{ asset('Empresas/adminUsuarios')}}">Admin Usuarios</a></li>
         <li><a href="{{ asset('Empresas/adminEmpresas')}}">Admin Empresas</a></li>
         <li><a href="mobile.html">Sesion</a></li>
       </ul>
@@ -35,11 +35,11 @@
         <h2>{{empresa.direccion}}</h2>
         <h2>{{empresa.telefono}}</h2>#}
 
- <div class="row col s6">
-        <div class="col s12 m3 offset-m1">
+ <div class="row">
+        <div class="col s12 m3 offset-m2">
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{empresa.imagen}}" width="150px" height="150px" >
+                <img class="activator" src="{{empresa.imagen}}">
               </div>
               <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{empresa.nombreEmpresa}}<i class="material-icons right">add</i></span>
@@ -54,7 +54,6 @@
             
         </div>
     </div>
-
         {% endfor %}
 
   <link href="{{ asset('web/layout/footer.php') }}">
@@ -63,10 +62,10 @@
          
   <!-- /////////////////////////////////////Scripts/////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
           {% block javascripts %}
-        <script href="{{ asset('js/jquery-3.1.1.js')}}"></script>
-         <script href="{{ asset('js/materialize.js')}}"></script>
-         <script href="{{ asset('js/jquery.validate.min.js')}}"></script>
-         <script src="{{ asset('js/datatable.js') }}"></script>
+         <script type="text/javascript" href="{{ asset('js/jquery-3.1.1.js')}}"></script>
+         <script type="text/javascript" href="{{ asset('js/materialize.js')}}"></script>
+         <script type="text/javascript" href="{{ asset('js/jquery.validate.min.js')}}"></script>
+         <script type="text/javascript" src="{{ asset('js/datatable.js') }}"></script>
          <script type="text/javascript">
      $(document).ready(function(){
         $('select').formSelect();

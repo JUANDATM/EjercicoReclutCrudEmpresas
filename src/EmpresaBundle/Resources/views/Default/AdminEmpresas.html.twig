@@ -22,7 +22,7 @@
       <ul class="right hide-on-med-and-down">
         <li><a href="{{ asset('Empresas/catalogoEmpresas')}}">Inicio</a></li>
         <li><a href="{{ asset('Empresas/adminUsuarios')}}">Admin Usuarios</a></li>
-        <li><a href="{{ asset('Empresas/adminEmpresas')}}">Admin Empresas</a></li>
+        <li><a href="{{ asset('Empresas/adminEmpresas')}}" >Admin Empresas</a></li>
         <li><a href="mobile.html">Sesion</a></li>
       </ul>
     </div>
@@ -71,11 +71,12 @@
             {% endfor %}
         </tbody>
     </table>
+        <a href="{{ path('empresa_new') }}">Create new</a>
        {# <a href="{{ path('empresa_new') }}">Create new</a>   #}
 </div>
 <!--          MODAL              -->
 
-<div class="modal fade" id="empresa-modal" tabindex="-1" role="dialog" aria-labelledby="empresa-modal"
+<div class="modal fade" id="empresamodal" name="empresamodal" tabindex="-1" role="dialog" aria-labelledby="empresa-modal"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -98,18 +99,12 @@
                         </div>                                        
                     <div class="row">
                         <div class="col">
-                            <input id="Telefono" type="text" class="form-control" placeholder="Telefono:">
+                            <input id="telefono" type="text" class="form-control" placeholder="Telefono:">
                         </div>
                     </div>
                      <div class="row">
                         <div class="col">
                             <input id="descripcion" type="text" class="form-control" placeholder="Telefono:">
-                        </div>
-                    </div>
-                     <div class="row">
-                        <div class="col">
-                            <input id="arch" type="file" name="arch">
-                            <input type="hidden" id="imagen" name="imagen">
                         </div>
                     </div>
             </div>
@@ -129,10 +124,12 @@
          
   <!-- /////////////////////////////////////Scripts/////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
           {% block javascripts %}
-         <script href="{{ asset('js/jquery-3.1.1.js')}}"></script>
-         <script href="{{ asset('js/materialize.js')}}"></script>
-         <script href="{{ asset('js/jquery.validate.min.js')}}"></script>
-         <script src="{{ asset('js/datatable.js') }}"></script>
+         <script type="text/javascript" href="{{ asset('js/jquery-3.1.1.js')}}"></script>
+         <script type="text/javascript" href="{{ asset('js/materialize.js')}}"></script>
+         <script type="text/javascript" href="{{ asset('js/jquery.validate.min.js')}}"></script>
+         <script type="text/javascript" src="{{ asset('js/datatable.js') }}"></script>
+         <script type="text/javascript" src="{{ asset('jsEmpresa/js/Empresas.js') }}"></script>
+
          <script type="text/javascript">
      $(document).ready(function(){
         $('select').formSelect();
