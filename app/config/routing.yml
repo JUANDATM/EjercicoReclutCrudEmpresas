@@ -1,7 +1,7 @@
 empresa:
     resource: "@EmpresaBundle/Controller/"
     type:     annotation
-    prefix:   /Empresa
+    prefix:   /
 
 app:
     resource: '@AppBundle/Controller/'

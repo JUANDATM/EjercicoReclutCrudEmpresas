@@ -1,18 +1,52 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block titulo %}Empresas{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }} media="screen,projection"" />
+        <link rel="stylesheet" href="{{ asset("css/materialize.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/materialize.min.css.0.100.2") }}">
+        <link rel="stylesheet" href="{{ asset("css/default.css") }}">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+     <link href="{{ asset('layout/head.php') }}">
 
-{% block title %}Producto index{% endblock %}
+     <header>
+<nav>
+    <!--  -->
+    <div class="nav-wrapper">
+      <a href="#" data-target="mobile-demo" 
+         class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="badges.html">Inicio</a></li>
+        <li><a href="collapsible.html">Usiarios</a></li>
+        <li><a href="mobile.html">Empresas</a></li>
+        <li><a href="mobile.html">Sesion</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
-{% block body %}
+    </head>
+    {% block body %}
 
-<div class="container">
-<h1>Productos</h1>
-</div>
-
-{% endblock %}
-
-{% block javascripts %}
-<script src="{{ asset('js/jquery-3.1.1.js')}}"></script>
-    <script src="{{ asset('js/materialize.js')}}"></script>
-    <script src="{{ asset('js/all.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.validate.min.js')}}"></script>
-{% endblock %}
+ <h1>RESIDENTES FTW</h1>
+    {% endblock %}
+        
+         
+  <!-- /////////////////////////////////////Scripts/////////////////////////////////////////////////////////////////////////////////////////////////////////////  -->
+          {% block javascripts %}
+         <script href="js/jquery-3.1.1.js">
+         <script href="js/materialize.js">
+         <script href="js/jquery.validate.min.js">
+         <script type="text/javascript">
+        $(document).ready(function(){
+            $('select').formSelect();
+            $('.sidenav').sidenav();
+            $(".dropdown-trigger").dropdown();
+        });
+    </script> 
+        {% endblock %}
+    </body>
+</html>
