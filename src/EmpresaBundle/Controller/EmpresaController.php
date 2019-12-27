@@ -30,7 +30,7 @@ use Symfony\Component\Serializer\Serializer;
         return $this->render('EmpresaBundle:Default:index.html.twig',array("empresa" => $empresa));
     }
       /**
-     * @Route("/adminEmpresas", name ="admin-Empresas")
+     * @Route("/adminEmpresas", name ="admin-Empresas",methods ={"GET"})
      */
     public function AdminEmpresasAction()
     {
@@ -59,22 +59,43 @@ use Symfony\Component\Serializer\Serializer;
      */
     public function new(Request $request): Response
     {
-        $data = $request->request->get('data');
-        $empresa = new Empresa();
-        $empresa->setNombreEmpresa($data['nombre']);
-        $empresa->setDireccion($data['direccion']);
-        $empresa->setTelefono($data['telefono']);
-        $empresa->setTelefono($data['descripcion']);
-        $existente = $this->getDoctrine()->getRepository(Empresa::class)->findOneBy(array('id'=>$empresa->getId()));
-        if($existente == NULL){
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($empresa);
-            $entityManager->flush();
-        }
-        $dataResponse = $this->serializeEmpresa($empresa);
-        $response = new Response($dataResponse);
-        $response->headers->set('Content-Type', 'application/json');
-        return $response;
+        $empresas = new Empresa();
+            $form = $this->createFormBuilder($empresas)
+            ->add('nombre', Empresa::class)
+            ->add('direccion', Empresa::class)
+            ->add('telefono', Empresa::class)
+            ->add('descripcion', Empresa::class)
+            ->getForm();
+
+            $form->handleRequest($request);
+            if ($form->isSubmitted()) {
+
+                $empresa = $form->getData();
+            
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($empresa);
+                $em->flush();
+            
+                return $this->redirect('/adminEmpresas');
+            
+              }
+
+
+
+        //$empresa->setNombreEmpresa($data['nombre']);
+        //$empresa->setDireccion($data['direccion']);
+       // $empresa->setTelefono($data['telefono']);
+       // $empresa->setDescripcion($data['descripcion']);
+      //  $existente = $this->getDoctrine()->getRepository(Empresa::class)->findOneBy(array('id'=>$empresa->getId()));
+      //  if($existente == NULL){
+      ///      $entityManager = $this->getDoctrine()->getManager();
+      //      $entityManager->persist($empresa);
+       //     $entityManager->flush();
+       // }
+      //  $dataResponse = $this->serializeEmpresa($empresa);
+      //  $response = new Response($dataResponse);
+       // $response->headers->set('Content-Type', 'application/json');
+       // return $response;
     }
 
 }

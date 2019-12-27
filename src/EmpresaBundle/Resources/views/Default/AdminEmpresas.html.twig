@@ -70,9 +70,7 @@
             </tr>
             {% endfor %}
         </tbody>
-    </table>
-        <a href="{{ path('empresa_new') }}">Create new</a>
-       {# <a href="{{ path('empresa_new') }}">Create new</a>   #}
+    </table>       {# <a href="{{ path('empresa_new') }}">Create new</a>   #}
 </div>
 <!--          MODAL              -->
 
@@ -88,29 +86,34 @@
             </div>
             <div class="modal-body">
                 <form id="empresa-form">
+                <br></br>
                     <div class="row">
-                      <div class="col">
+                      <div class="col s12">
                         <input id="nombre" type="text" class="form-control" placeholder="Nombre Empresa:" required>
                       </div>
+                      </div>
+                        <br></br>
                          <div class="row">
-                             <div class="col">
+                             <div class="col s12">
                                 <input id="direccion" type="text" class="form-control" placeholder="Direccion Empresa:">
                             </div>
-                        </div>                                        
+                        </div>     
+                    <br></br>
                     <div class="row">
-                        <div class="col">
+                     <div class="col s5">
                             <input id="telefono" type="text" class="form-control" placeholder="Telefono:">
                         </div>
-                    </div>
-                     <div class="row">
-                        <div class="col">
-                            <input id="descripcion" type="text" class="form-control" placeholder="Telefono:">
+                        </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <input id="descripcion" type="text" class="form-control" placeholder="Descripcion:">
                         </div>
                     </div>
+                <br></br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button id="productos-guardar" type="submit" class="btn btn-primary">Guardar</button>
+                <button id="productos-guardar" type="submit" class="btn btn-primary"><a href="{{ path('empresa_new') }}">Crear Nuevo Registro</a></button>
             </div>
         </form>
 

@@ -1,5 +1,4 @@
 $(init);
-document.write("funciona chingadera!!!");
 
 function init() {
     // Inicializa el NavBar
@@ -20,44 +19,32 @@ function init() {
         $("#descripcion").val('');
         $("#empresamodal").modal('open');
         $("#nombre").focus();
+        route = "/empresas/new";
+        E
     });
-
     // clic del boton de guardar
     $('#guardar').on("click", function() {
-        $('#frm-registro').submit();
+        document.getElementById('empresa-form').reset();
+        $('#empresa-form').submit();
+        route = "/producto/new";
     });
-
 }
 
 function validateForm() {
-    $('#frm-acceso').validate({
+    $('#empresa-form').validate({
         rules: {
-            correo: { required: true, email: true, minlength: 4, maxlength: 120 },
-            contra: { required: true, minlength: 4, maxlength: 32 },
+            nombre: { required: true, minlength: 4, maxlength: 220 },
+            direccion: { required: true, minlength: 4, maxlength: 220 },
+            telefono: { required: true, number: true, minlength: 7, maxlength: 13 },
+            descripcion: { required: true, minlength: 4, maxlength: 250 },
+
         },
         messages: {
-            correo: { required: "No puedes dejar este campo vacío", email: "Se requiere correo valido", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 120 caracteres" },
-            contra: { required: "No puedes dejar este campo vacío", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 32 caracteres" },
-        },
-        errorElement: "div",
-        errorClass: "invalid",
-        errorPlacement: function(error, element) {
-            error.insertAfter(element)
-        },
-        submitHandler: function(form) {
-            validaData();
-        }
-    });
-    $('#frm-registro').validate({
-        rules: {
-            corr: { required: true, email: true, minlength: 4, maxlength: 120 },
-            nom: { required: true, minlength: 4, maxlength: 100 },
-            pwd: { required: true, minlength: 4, maxlength: 32 },
-        },
-        messages: {
-            corr: { required: "No puedes dejar este campo vacío", email: "Se requiere correo valido", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 120 caracteres" },
-            nom: { required: "No se puede dejar el campo vacio", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 100 caracteres" },
-            pwd: { required: "No puedes dejar este campo vacío", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 32 caracteres" },
+            nombre: { required: "No puedes dejar este campo vacío", email: "Se requiere correo valido", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 220 caracteres" },
+            direccion: { required: "No se puede dejar el campo vacio", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 220 caracteres" },
+            telefono: { required: "No puedes dejar este campo vacío", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 13 caracteres" },
+            descripcion: { required: "No puedes dejar este campo vacío", minlength: "Debes ingresar al menos 4 caracteres", maxlength: "No puedes ingresar más de 250 caracteres" },
+
         },
         errorElement: "div",
         errorClass: "invalid",
