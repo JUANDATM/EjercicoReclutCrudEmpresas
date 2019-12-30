@@ -89,31 +89,41 @@
                 <br></br>
                     <div class="row">
                       <div class="col s12">
-                        <input id="nombre" type="text" class="form-control" placeholder="Nombre Empresa:" required>
+                        <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Nombre Empresa:" required>
                       </div>
                       </div>
                         <br></br>
                          <div class="row">
                              <div class="col s12">
-                                <input id="direccion" type="text" class="form-control" placeholder="Direccion Empresa:">
+                                <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Direccion Empresa:">
                             </div>
                         </div>     
                     <br></br>
                     <div class="row">
                      <div class="col s5">
-                            <input id="telefono" type="text" class="form-control" placeholder="Telefono:">
+                            <input id="direccion" name="direccion" type="text" class="form-control" placeholder="Telefono:">
                         </div>
                         </div>
                     <div class="row">
                         <div class="col s12">
-                            <input id="descripcion" type="text" class="form-control" placeholder="Descripcion:">
+                            <input id="descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripcion:">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <input id="imagen" name="imagen" type="text" class="form-control" placeholder="imagen test:">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <input id="visitas" name="visitas"  type="number" class="form-control" placeholder="visitas test:">
                         </div>
                     </div>
                 <br></br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button id="productos-guardar" type="submit" class="btn btn-primary"><a href="{{ path('empresa_new') }}">Crear Nuevo Registro</a></button>
+                <button id="empresas-guardar" class="btn btn-primary"><a>Crear Nuevo Registro</a></button>
             </div>
         </form>
 

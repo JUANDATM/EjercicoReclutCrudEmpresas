@@ -17,16 +17,23 @@ function init() {
         $("#direccion").val('');
         $("#telefono").val('');
         $("#descripcion").val('');
+        $("#imagen").val('');
+        $("#visitas").val('');
         $("#empresamodal").modal('open');
         $("#nombre").focus();
         route = "/empresas/new";
-        E
+
     });
     // clic del boton de guardar
-    $('#guardar').on("click", function() {
+    $('#empresas-guardar').on("click", function() {
+        event.preventDefault()
         document.getElementById('empresa-form').reset();
         $('#empresa-form').submit();
-        route = "/producto/new";
+        route = "/empresas/new";
+    });
+    $('#productos-form').on('submit', function(e) {
+        e.preventDefault();
+        add(table);
     });
 }
 
@@ -58,26 +65,56 @@ function validateForm() {
 
 }
 // Envia los datos del formulario de registro a la base de datos
-function saveData() {
-    var sURL = "actRegistroGuarda.php";
-    var parametros = 'corr=' + $("#corr").val() +
-        '&nom=' + $("#nom").val() +
-        '&tip=' + $("#tip").val() +
-        '&pwd=' + $("#pwd").val();
+function add(table) {
     $.ajax({
         type: "post",
-        url: sURL,
-        dataType: 'json',
-        data: parametros,
-        success: function(respuesta) {
-            if (respuesta['status']) {
-                $("#correo").val($("#corr").val());
-                M.toast({ html: 'Registro exitoso', classes: 'rounded', displayLength: 4000 });
-                $("#modalRegistro").modal('close');
-                $("#contra").focus();
+        url: route,
+        data: {
+            'data': {
+                'nombre_empresa': $('#nombre').val(),
+                'direccion': $('#direccion').val(),
+                'telefono': $('#telefono').val(),
+                'pdescripcion': $('#descripcion').val(),
+                'imagen': $('#imagen').val(),
+                'visitas': $('#visitas').val(),
+            }
+        },
+        dataType: "json",
+        success: function(response) {
+            if (response.id == null) {
+                alert('La empresa ya existe, intenta otra.');
             } else {
-                M.toast({ html: 'Error al Registrar Usuario', classes: 'rounded', displayLength: 4000 });
+                if (route.includes("edit")) {
+                    table.row(temp_row).remove().draw();
+                }
+                addRow(response, table, false);
+                $('#empresas-modal').modal('hide');
             }
         }
     });
+}
+
+function remove(id) {
+    $.ajax({
+        type: "delete",
+        url: "/empresas/" + id,
+        success: function(response) {
+            if (response.is_deleted) {
+
+            }
+        }
+    });
+}
+
+function addRow(data, table, updated) {
+    let row = table.row.add([
+        data.id,
+        data.nombre_empresa,
+        data.direccion,
+        data.telefono,
+        data.descripcion,
+        data.imagen,
+        data.visitas,
+        '<td><button type="button" class="btn btn-warning edit">Editar</button> <button type="button" class="btn btn-danger delete">Eliminar</button></td>'
+    ]).draw().node();
 }
